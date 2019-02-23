@@ -1,0 +1,12 @@
+.book-search {
+    border-style: solid;
+    border-width: 0.5px;
+    padding-top: 2%;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+};
+
+.book-search-btn {
+    float: right;
+}
