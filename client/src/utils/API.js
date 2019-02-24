@@ -1,23 +1,26 @@
 import axios from "axios";
 
+require("dotenv").config();
+
 export default {
+
   // Gets all books
-  getBooks: function() {
+  getBooks: function () {
     return axios.get("/api/books");
   },
-  getSavedBooks: function() {
+  getSavedBooks: function () {
     return axios.get("/api/books/saved")
   },
   // Gets the book with the given id
-  getBook: function(id) {
+  getBook: function (id) {
     return axios.get("/api/books/saved" + id);
   },
   // Deletes the book with the given id
-  deleteBook: function(id) {
+  deleteBook: function (id) {
     return axios.delete("/api/books/saved" + id);
   },
   // Saves a book to the database
-  saveBook: function(bookData) {
+  saveBook: function (bookData) {
     return axios.post("/api/books/saved", bookData);
   }
 };
