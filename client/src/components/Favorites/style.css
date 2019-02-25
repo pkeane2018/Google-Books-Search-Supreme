@@ -1,0 +1,16 @@
+.results-div {
+    border-style: solid;
+    border-width: 0.5px;
+    margin-bottom: 2%;
+    padding: 2%;
+}
+
+img {
+    float: left;
+    margin: 2%
+}
+
+.book-buttons {
+    clear: left;
+    float: right;
+}

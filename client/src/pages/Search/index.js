@@ -84,11 +84,11 @@ class Search extends Component {
       <Results 
       key={entry.id}
       id ={entry.id}
-      title = {entry.volumeInfo.title}
-      author={entry.volumeInfo.authors}
-      description={entry.volumeInfo.description}
-      link={entry.volumeInfo.infoLink}
-      image={entry.volumeInfo.imageLinks.thumbnail}
+      title = {entry.volumeInfo.title ? entry.volumeInfo.title :null}
+      author={entry.volumeInfo.authors ? entry.volumeInfo.authors : null}
+      description={entry.volumeInfo.description ? entry.volumeInfo.description: null}
+      link={entry.volumeInfo.infoLink ? entry.volumeInfo.infoLink: null}
+      image={entry.volumeInfo.imageLinks ? entry.volumeInfo.imageLinks.thumbnail : null}
       saveBook ={this.saveBook}
       />
 

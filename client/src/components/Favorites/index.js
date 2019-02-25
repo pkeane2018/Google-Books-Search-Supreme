@@ -1,13 +1,13 @@
 import React from "react";
 import style from "./style.css"
 
-function Results(props) {
+function Favorites(props) {
 
     return (
         <div className="container results-div" style={style}>
             <div className="book-buttons">
                 <a href={props.link} target="_blank"><button type="button" className="btn btn-secondary">View</button></a>{"\u00a0"}
-                <button type="button" className="btn btn-secondary" style={style} onClick={() => props.saveBook(props.title, props.author, props.image, props.description, props.link)}>Save</button>
+                <button type="button" className="btn btn-secondary" style={style} onClick={() => props.deleteBook(props.id)}>Delete</button>
             </div>
             <h2>{props.title}</h2>
             <p>{props.author}</p>
@@ -19,4 +19,4 @@ function Results(props) {
 
 };
 
-export default Results;
+export default Favorites;

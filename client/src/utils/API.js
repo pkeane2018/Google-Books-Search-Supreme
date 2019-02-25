@@ -1,7 +1,5 @@
 import axios from "axios";
 
-require("dotenv").config();
-
 export default {
 
   // Gets all books
@@ -17,7 +15,7 @@ export default {
   },
   // Deletes the book with the given id
   deleteBook: function (id) {
-    return axios.delete("/api/books/saved" + id);
+    return axios.delete("/api/books/saved/" + id);
   },
   // Saves a book to the database
   saveBook: function (bookData) {
