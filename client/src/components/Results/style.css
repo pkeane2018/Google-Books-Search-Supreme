@@ -9,3 +9,8 @@ img {
     float: left;
     margin: 2%
 }
+
+.book-buttons {
+    clear: left;
+    float: right;
+}

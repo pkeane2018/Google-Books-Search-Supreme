@@ -1,54 +1,23 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import style from "./style.css";
-import { callbackify } from "util";
 import Results from "../../components/Results";
 
 var axios = require("axios");
 
-require("dotenv").config();
-
 class Search extends Component {
-  // Setting our component's initial state
+  
   state = {
     query: "",
     results: []
   };
 
-  // // When the component mounts, load all books and save them to this.state.books
-  // componentDidMount() {
-  //   this.loadBooks();
-  // }
-
-  // // Loads all books  and sets them to this.state.books
-  // loadBooks = () => {
-  //   API.getBooks()
-  //     .then(res =>
-  //       this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
-
-  // // Deletes a book from the database with a given id, then reloads books from the db
-  // deleteBook = id => {
-  //   API.deleteBook(id)
-  //     .then(res => this.loadBooks())
-  //     .catch(err => console.log(err));
-  // };
-
-  // // Handles updating component state when the user types into the input field
   handleInputChange = event => {
     var value = event.target.value;
     this.setState({
       query: value
     });
   };
-
-  // replaceSpace = (query) => {
-  //   if ((query.indexOf(" ")) > -1) {
-  //     query = query.replace(" ", "+")
-  //   };
-  // };
 
   searchAPI = (query) => {
     axios({
@@ -59,25 +28,27 @@ class Search extends Component {
       console.log(response.data);
       this.setState({results: response.data.items})
     })
+    .then( () => {
+      this.updateAuthors();
+    })
+    .then(() => {
+      this.setState({query: " "})
+    })
     .catch((error) => {
       console.log(error);
     })
-  };
+  }; //Is there an issue with chaining this many promises together? This was the main way I could think of to avoid code running asynchronously.
 
-  // When the form is submitted, use the API.saveBook method to save the book data
-  // Then reload books from the database
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
+  updateAuthors = () => {
+    var results = this.state.results;
+    for (var i = 0; i < results.length; i++) {
+      if ((results[i].volumeInfo.authors.length) > 1) {
+        var author = results[i].volumeInfo.authors.join(", ");
+        results[i].volumeInfo.authors = author; 
+      }
+    };
+    this.setState({results: results});
+  };
 
   searchBooks = (event) => {
     event.preventDefault();
@@ -86,24 +57,39 @@ class Search extends Component {
         query = query.replace(/\s/g, "+")
       };
       console.log("Now the search term is" + query);
-    this.searchAPI(query);
-  }; //I thought I may run into problems with the various parts of this method executing asyncronously, but haven't noticed any yet
+    this.searchAPI(query)
+  }//I thought I may run into problems with the various parts of this method executing asyncronously, but haven't noticed any yet
+
+  saveBook = (bookTitle, bookAuthor, bookImage, bookDescription, bookLink) => {
+    API.saveBook({
+      title : bookTitle,
+      author: bookAuthor,
+      image: bookImage,
+      description: bookDescription,
+      link: bookLink
+    })
+    .then( () => console.log("Book saved to database"))
+    .catch(err => console.log(err));
+  }
 
   componentDidUpdate() {
     console.log(this.state)
+    
   };
 
   render() {
 
-    var results = this.state.results.map((entry) => 
+    var updatedResults = this.state.results.map((entry) => 
       
       <Results 
       key={entry.id}
+      id ={entry.id}
       title = {entry.volumeInfo.title}
       author={entry.volumeInfo.authors}
       description={entry.volumeInfo.description}
       link={entry.volumeInfo.infoLink}
       image={entry.volumeInfo.imageLinks.thumbnail}
+      saveBook ={this.saveBook}
       />
 
       )
@@ -120,7 +106,7 @@ class Search extends Component {
         <form >
           <div className="form-group">
             <label htmlFor="search-bar">Search</label>
-              <input type="text" className="form-control" id="search-bar" placeholder="Enter book by title here" onChange={this.handleInputChange} />
+              <input type="text" className="form-control" id="search-bar" placeholder="Enter book by title here" value={this.state.query} onChange={this.handleInputChange} />
           </div>
         </form>
         <button type="button" className="btn btn-primary book-search-btn" style={style} onClick={this.searchBooks}>
@@ -130,7 +116,7 @@ class Search extends Component {
       <br />
       <div>
       <h1>Results</h1>
-      {results}
+      {updatedResults}
       </div>
     </div>
     );
