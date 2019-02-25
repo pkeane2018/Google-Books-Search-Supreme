@@ -38,7 +38,7 @@ class Saved extends Component {
         title = {entry.title ? entry.title :null}
         author={entry.authors ? entry.authors : null}
         description={entry.description ? entry.description: null}
-        link={entry.infoLink ? entry.infoLink: null}
+        link={entry.link ? entry.link: null}
         image={entry.image ? entry.image : null}
         deleteBook ={this.deleteBook}
         />

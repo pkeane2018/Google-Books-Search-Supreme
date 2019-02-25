@@ -115,7 +115,7 @@ class Search extends Component {
       </div>
       <br />
       <div>
-      <h1>Results</h1>
+      <h1>{this.state.results.length > 0 ? "Results" : null}</h1>
       {updatedResults}
       </div>
     </div>
