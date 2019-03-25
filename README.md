@@ -14,3 +14,27 @@ The 'components' folder contains three subfolders, 'Favorites', 'Navbar', and 'R
 Also with the 'src' folder is the 'pages' folder, which contains two subfolder - 'Search' and 'Saved'. Each of these folders contains an index.js file, with JSX code for each of the two pages on the site - the homepage/'Search' page and the 'Saved' page. The 'Search' page imports the 'Results' component, as well as the connection to the api routes found in the API.js file within the 'utils' folder. It also contains methods for querying the Google Books API, as well as saving and the query term and the results in its state. The 'Search' component also contains a method for saving books to the database when the 'Save' button is clicked and is passed as a prop of the 'Results' component. The 'Search' page imports the 'Favorites' component as well as the connection to the api routes found in the API.js file within the 'utils' folder. When this page loads, the saved books data is retrieved from the database and displayed on the page. The 'Search' component also contains a method for deleting books from the database, and passes this method to the 'Favorites' component as a prop. 
 Within the 'src' folder is App.js, in which the the 'Navbar' component, and the 'Search' and 'Saved' components are imported. React Router is used to determine when the 'Search' and 'Saved' components are displayed, based on when the url for each of these pages is hit. The 'Navbar' component is displayed on both pages. Also with the 'src' folder is 'index.js', which contains code to render the contents of App.js, and the components within it, to the 'root' div inside of 'index.html' in the 'public' folder.  
 
+## How to use the site
+The user can use the navbar at the top of the homepage to navigate to the different pages on the site. Clicking on 'Search' or 'Home' will bring the user to the homepage/'Search' page. Clicking on 'Saved' will direct the user to the 'Saved page. On the homepage, users can search the Google Books API by typing the title of a book in the search bar and clicking the 'Submit' button. Ten results from the API are then displayed below. Within the box for each result, clicking on the 'View' button will open an external Google Books webpage with more information on the book. Clicking the 'Save' button will save the book to the database. The 'Saved' page shows the books the user has saved to the database. The user can once again click on the 'View' button within the div for each book to open a Google Books webpage on the book in another tab, or click the 'Delete' button to delete that book from the database and display the updated results on the page.  
+
+## Technology used
+* HTML
+* CSS
+* CSS Bootstrap
+* jQuery
+* React
+* JSX
+* Nodejs
+* node packages
+   * axios
+   * react
+   * react-dom
+   * express
+   * mongoose
+  
+ ## Future Improvements
+There is an issue with how the book information is displayed for some books in both the 'Search' and 'Saved' pages - the the thumbnail image for some books overflows the div, in some cases into the div below it. Depending on the books being shown on each page, this can greatly negatively impact how the information is displayed. Further changes will need to be made to address this issue. Also, it may be unncessary to have seperate React routes for the homepage and the 'Search' page, since the same components are displayed for each page. Either the 'Home' or the 'Search' option in the navbar could perhaps be eliminated, along with one of the corresponding React routes.
+
+## Link to deployed site
+<a href="https://google-books-supreme.herokuapp.com/">Google Books Search Supreme</a>
+
