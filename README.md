@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # Google Books Search Supreme
-This site allows users to search for books from the Google Books API and save their favorites. This site is great for book-lovers who want to search for information on books and save that information in one place, where it can be easily accessed.
+This site allows users to search for books from the Google Books API and save their favorites. This site is great for book-lovers who want to search for information on books and save that information in a single, easily-accessible place.
 
 ## How to run the site on a local machine
 The repository can be cloned by clicking the Clone or Download button on the main repository page, then clicking the button next to the url which appears below. Then open a Terminal or Git Bash window, navigate to the location where you want to place the cloned repository, then type 'git clone' and then paste the repository that was just copied. The neccessary node packages can installed by navigating into the main directory in the terminal and entering 'npm install.' Then enter 'npm start' to launch the site. The site should then open in the default web browser at 'localhost:3000.'
