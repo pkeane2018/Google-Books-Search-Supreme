@@ -21,7 +21,7 @@ The user can use the navbar at the top of the homepage to navigate to the differ
 * HTML
 * CSS
 * CSS Bootstrap
-* jQuery
+* JavaScript
 * React
 * JSX
 * Nodejs
