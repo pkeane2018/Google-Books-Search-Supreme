@@ -17,6 +17,12 @@ Within the 'src' folder is App.js, in which the the 'Navbar' component, and the 
 ## How to use the site
 The user can use the navbar at the top of the homepage to navigate to the different pages on the site. Clicking on 'Search' or 'Home' will bring the user to the homepage/'Search' page. Clicking on 'Saved' will direct the user to the 'Saved page. On the homepage, users can search the Google Books API by typing the title of a book in the search bar and clicking the 'Submit' button. Ten results from the API are then displayed below. Within the box for each result, clicking on the 'View' button will open an external Google Books webpage with more information on the book. Clicking the 'Save' button will save the book to the database. The 'Saved' page shows the books the user has saved to the database. The user can once again click on the 'View' button within the div for each book to open a Google Books webpage on the book in another tab, or click the 'Delete' button to delete that book from the database and display the updated results on the page.  
 
+![Image 1](./images/image-1.png)
+<br><br>
+![Image 2](./images/image-2.png)
+<br><br>
+![Image 3](./images/image-3.png)
+
 ## Technology used
 * HTML
 * CSS
