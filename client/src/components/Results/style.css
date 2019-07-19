@@ -8,9 +8,10 @@
 
 .book-image {
     float: left;
-    margin: 2%;
+    margin-bottom: 10%;
     max-height: 100%;
     max-width: 100%;
+    overflow: hidden;
 }
 
 .book-buttons {

@@ -11,7 +11,9 @@ function Results(props) {
             </div>
             <h2>{props.title}</h2>
             <p>{props.author}</p>
+            <br />
             <img src={props.image} className="book-image" style={style}/>
+            <br />
             <p>{props.description}</p>
             <br />
         </div>
