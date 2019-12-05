@@ -37,7 +37,7 @@ class Search extends Component {
     .catch((error) => {
       console.log(error);
     })
-  }; //Is there an issue with chaining this many promises together? This was the main way I could think of to avoid code running asynchronously.
+  };
 
   updateAuthors = () => {
     var results = this.state.results;
