@@ -13,9 +13,6 @@ class Saved extends Component {
         .then(res => 
             this.setState({books: res.data})
         )
-        .then(() => {
-            console.log(this.state);
-        })
         .catch(err => console.log(err))
     };
 
@@ -33,14 +30,14 @@ class Saved extends Component {
         var favoriteBooks = this.state.books.map((entry) => 
         
         <Favorites 
-        key={entry._id}
-        id ={entry._id}
-        title = {entry.title ? entry.title :null}
-        author={entry.authors ? entry.authors : null}
-        description={entry.description ? entry.description: null}
-        link={entry.link ? entry.link: null}
-        image={entry.image ? entry.image : null}
-        deleteBook ={this.deleteBook}
+            key={entry._id}
+            id ={entry._id}
+            title = {entry.title ? entry.title :null}
+            author={entry.authors ? entry.authors : null}
+            description={entry.description ? entry.description: null}
+            link={entry.link ? entry.link: null}
+            image={entry.image ? entry.image : null}
+            deleteBook ={this.deleteBook}
         />
         
         )

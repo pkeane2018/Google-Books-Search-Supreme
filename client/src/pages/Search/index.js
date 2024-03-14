@@ -25,7 +25,6 @@ class Search extends Component {
       url: "https://www.googleapis.com/books/v1/volumes?q=" + query
     })
     .then( (response) => {
-      console.log(response.data);
       this.setState({results: response.data.items})
     })
     .then( () => {
@@ -56,9 +55,8 @@ class Search extends Component {
       if ((query.indexOf(" ")) > -1) {
         query = query.replace(/\s/g, "+")
       };
-      console.log("Now the search term is" + query);
     this.searchAPI(query)
-  }//I thought I may run into problems with the various parts of this method executing asyncronously, but haven't noticed any yet
+  }
 
   saveBook = (bookTitle, bookAuthor, bookImage, bookDescription, bookLink) => {
     API.saveBook({
@@ -68,28 +66,22 @@ class Search extends Component {
       description: bookDescription,
       link: bookLink
     })
-    .then( () => console.log("Book saved to database"))
     .catch(err => console.log(err));
   }
-
-  componentDidUpdate() {
-    console.log(this.state)
-    
-  };
 
   render() {
 
     var updatedResults = this.state.results.map((entry) => 
       
       <Results 
-      key={entry.id}
-      id ={entry.id}
-      title = {entry.volumeInfo.title ? entry.volumeInfo.title :null}
-      author={entry.volumeInfo.authors ? entry.volumeInfo.authors : null}
-      description={entry.volumeInfo.description ? entry.volumeInfo.description: null}
-      link={entry.volumeInfo.infoLink ? entry.volumeInfo.infoLink: null}
-      image={entry.volumeInfo.imageLinks ? entry.volumeInfo.imageLinks.thumbnail : null}
-      saveBook ={this.saveBook}
+        key={entry.id}
+        id ={entry.id}
+        title = {entry.volumeInfo.title ? entry.volumeInfo.title :null}
+        author={entry.volumeInfo.authors ? entry.volumeInfo.authors : null}
+        description={entry.volumeInfo.description ? entry.volumeInfo.description: null}
+        link={entry.volumeInfo.infoLink ? entry.volumeInfo.infoLink: null}
+        image={entry.volumeInfo.imageLinks ? entry.volumeInfo.imageLinks.thumbnail : null}
+        saveBook ={this.saveBook}
       />
 
       )
